@@ -1,0 +1,25 @@
+#ローカルリポジトリをGitHubに紐付ける方法
+1. ローカル作業完了でgit initでリポジトリを作成
+2. GitHubで新規リポジトリを作成
+    SSHの場合    git@GitHub.com:ユーザー名/リポジトリ名.git
+    HTTPSの場合  https://GitHub.com/ユーザー名/リポジトリ名.git
+   というリポジトリがGitHub上に作成される
+3. リポジトリとして登録する
+    git remote add origin git@GitHub.com:ユーザー名/リポジトリ名.git # リモートブランチを登録
+    もしくは
+    git remote add origin https://GitHub.com/ユーザー名/リポジトリ名.git
+
+※originとはリモートの名前のこと
+
+4. ローカルリポジトリのコミットをリモートリポジトリに反映
+    git push origin main # リモートブランチに反映
+   1つ目の引数originはリモートリポジトリのエイリアス
+   2つ目のmainはブランチ名を指している。
+   例えばブランチ名がdevelopという名前の場合は以下のようなコマンドになる
+    git push origin develop
+
+5. ローカルリポジトリの上流ブランチを登録する
+   毎回pushする度にリポジトリ名やブランチ名を指定するのは面倒なため、
+   以下のように-uオプションで上流ブランチを登録することで自動的にリモートブランチの引数を設定するようにする
+    git push -u origin main
+   今回の場合、originのリモート名でmainのブランチを省略することができる
